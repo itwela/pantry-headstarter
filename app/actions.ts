@@ -119,7 +119,7 @@ export async function updatePantryItems(formData: FormData, formState: FormState
     const itemID = formData.get('item-id') as string;
     const item_name = formData.get("item-name") as string;
     const item_quantity = Number(formData.get("item-quantity"));
-    const item_image_pexals = formData.get("item-image-pexals") as string;
+    // const item_image_pexals = formData.get("item-image-pexals") as string;
 
     try {
         await prisma?.item.update({
@@ -129,7 +129,7 @@ export async function updatePantryItems(formData: FormData, formState: FormState
             data: {
                 ItemTitle: item_name,
                 ItemQuantity: item_quantity,
-                ItemImagePexals: item_image_pexals,
+                // ItemImagePexals: item_image_pexals,
             },
         });
 
