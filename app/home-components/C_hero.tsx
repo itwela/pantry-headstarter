@@ -114,7 +114,6 @@ export default function ClientHero( { items }: { items: PantryItem[] } ) {
                         onChange={handleSearchChange}
                         className="w-1/2 place-self-start outline-transparent flex place-items-center outline p-2 rounded-xl px-4"
                     />
-
                 <div className="pt-[5vh]  w-full h-[80vh] sm:h-[50vh] overflow-y-scroll p-5 place-items-center grid grid-cols-1 sm:grid-cols-4 gap-[6px]">
                     {filteredPosts.map((item, index) => (
                         <>
@@ -136,7 +135,7 @@ export default function ClientHero( { items }: { items: PantryItem[] } ) {
                                 scale: 1.05 
                             }}
                             
-                            key={item.id} className="w-[100%] h-[200px] outline outline-[1px] relative place-items-end rounded-xl flex gap-4 justify-between p-3" style={{ backgroundImage: `url(${item.ItemImagePexals as string})` }}>                
+                            key={item.id} className="w-[100%] h-[200px] outline outline-[1px] relative place-items-end rounded-xl flex gap-4 justify-between p-3" style={{ backgroundImage: `url(${item.ItemImagePexals as string})`, backgroundRepeat: 'no-repeat', backgroundSize: 'fill' }}>                
                                 <span className="cursor-pointer select-none bg-neutral-600 text-white rounded-xl px-3 py-1 font-bold" onClick={() => toggleAdd(item.id, item.ItemTitle, item.ItemQuantity)}>{item.ItemTitle}</span>
                                 <motion.span onClick={() => toggleAdd(item.id, item.ItemTitle, item.ItemQuantity)} className="absolute select-none cursor-pointer top-[-3%] left-[-3%] px-3 rounded-full bg-white text-neutral-700 font-bold"
                                     whileHover={{ scale: 1.2 }}
@@ -160,6 +159,27 @@ export default function ClientHero( { items }: { items: PantryItem[] } ) {
                         </AnimatePresence>
                         </>
                     ))}
+                    <AnimatePresence>
+                        <motion.div 
+                        initial={{ 
+                            opacity: 0,
+                            y: 100
+                        }}
+                        animate={{ 
+                            opacity: 1,
+                            y: 0 
+                        }}
+                        exit={{ 
+                            opacity: 0,
+                            y: 10
+                        }}
+                        whileHover={{ 
+                            scale: 1.05 
+                        }}
+                        className="cursor-pointer w-[100%] h-[200px] bg-white rounded-xl text-black flex place-content-center place-items-center">
+                            <p>Generate recipies</p>
+                        </motion.div>
+                    </AnimatePresence>
                     <ClientAdd items={items} />
                 </div>
             </div>
