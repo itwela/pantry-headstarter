@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+*:focus{
+  box-shadow: none !important;
 }
+
+textarea {
+  resize: none;
+  }
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+  }

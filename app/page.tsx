@@ -1,11 +1,18 @@
+import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import ClientHero from "./home-components/C_hero";
+import { getPantryItems } from "./actions";
 
-export default function Home() {
-  return (
-    <main className="flex bg-black min-h-screen flex-col items-center justify-between p-24">
-      <div>
-        <h1 className="text-3xl font-bold text-white">Hello.</h1>
-      </div>
-    </main>
-  );
+export default async function Home() {
+
+  try {
+    const pantryItems = await getPantryItems();
+    return (
+      <main className="bg-neutral-800 overflow-hidden text-white min-h-screen relative flex-col place-items-center p-8  md:p-24">
+        <ClientHero items={pantryItems ?? []}  />
+      </main>
+    );
+  } catch (error) {
+  }
+
 }
